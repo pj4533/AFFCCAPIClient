@@ -1,0 +1,17 @@
+PODS:
+  - AFFCCAPIClient (0.0.1):
+    - AFNetworking
+  - AFNetworking (1.2.1)
+
+DEPENDENCIES:
+  - AFFCCAPIClient (from `../`)
+
+EXTERNAL SOURCES:
+  AFFCCAPIClient:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AFFCCAPIClient: 6bb267e623d486735b220756df08af98f040c8b1
+  AFNetworking: a44069e3c9c89867544f6639482f155c7e5f9b41
+
+COCOAPODS: 0.20.2
