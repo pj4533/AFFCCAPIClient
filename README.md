@@ -4,7 +4,18 @@ An AFHTTPClient subclass for the [FCC API](http://www.fcc.gov/developers).
 
 Primary purpose right now is using the [census block conversions](http://www.fcc.gov/developers/census-block-conversions-api) API for an easy way to get FIPS numbers from GPS coordinates.
 
-## Usage
+## Instructions
+
+#### Install
+Available on CocoaPods, simply add to your Podfile:
+
+```
+pod 'AFFCCAPIClient'
+```
+
+then do a 'pod install'
+
+#### Code
 
 ``` objective-c
 [[AFFCCAPIClient sharedClient] getFIPSWithLat:@"42.343653" withLng:@"-71.097701" success:^(AFHTTPRequestOperation *operation, id responseObject) {
