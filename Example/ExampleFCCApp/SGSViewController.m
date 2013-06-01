@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     
-    [[AFFCCAPIClient fccAPIClient] getFIPSWithLat:@"42.343653" withLng:@"-71.097701" success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[AFFCCAPIClient sharedClient] getFIPSWithLat:@"42.343653" withLng:@"-71.097701" success:^(AFHTTPRequestOperation *operation, id responseObject) {
  
         NSLog(@"FIPS Dictionary: %@", responseObject);
         

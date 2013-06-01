@@ -22,16 +22,32 @@
 
 #import "AFFCCAPIClient.h"
 
+static NSString * const kFCCBaseURLString = @"http://data.fcc.gov/api/";
+
 @implementation AFFCCAPIClient
-+ (AFFCCAPIClient*) fccAPIClient {
-    NSString* urlString = @"http://data.fcc.gov/api/";
-    AFFCCAPIClient* client = [[AFFCCAPIClient alloc] initWithBaseURL:[NSURL URLWithString:urlString]];
-    [client registerHTTPOperationClass:[AFJSONRequestOperation class]];
-    [client setDefaultHeader:@"Accept" value:@"application/json"];
+
++ (instancetype)sharedClient {
+    static AFFCCAPIClient *_sharedClient = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _sharedClient = [[self alloc] init];
+    });
     
-    client.parameterEncoding = AFJSONParameterEncoding;
-    return client;
+    return _sharedClient;
+}
+
+- (instancetype)init {
+    self = [super initWithBaseURL:[NSURL URLWithString:kFCCBaseURLString]];
+    if (!self) {
+        return nil;
+    }
     
+    [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
+    [self setDefaultHeader:@"Accept" value:@"application/json"];
+    
+    self.parameterEncoding = AFJSONParameterEncoding;
+    
+    return self;
 }
 
 - (void)getFIPSWithLat:(NSString*) lat

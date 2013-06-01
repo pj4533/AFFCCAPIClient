@@ -24,7 +24,7 @@
 
 @interface AFFCCAPIClient : AFHTTPClient
 
-+ (AFFCCAPIClient*) fccAPIClient;
++ (instancetype)sharedClient;
 
 - (void)getFIPSWithLat:(NSString*) lat
                withLng:(NSString*) lng
